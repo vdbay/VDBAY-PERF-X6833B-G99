@@ -1,7 +1,4 @@
-#===== WAIT UNTIL BOOT IS COMPLETED =====#
-while [ -z "$(getprop sys.boot_completed)" ]; do
-    sleep 30
-done
+su -lp 2000 -c "cmd notification post -S bigtext -t 'VDBay Performance' -i file:///data/local/tmp/vdbay_logo.png -I file:///data/local/tmp/vdbay_logo.png 'Tag$(date +%s)' 'Starting...'" >/dev/null 2>&1 &
 
 #===== CHANGE PERMISSION, INSERT VALUE, AND LOCK VALUE =====#
 # $1 VALUE, $2 FILEPATH(S)
@@ -368,4 +365,3 @@ v_set_value "performance" /sys/devices/platform/soc/1c00f000.dvfsrc/mtk-dvfsrc-d
 #===== END OF PERFORMANCE =====#
 
 su -lp 2000 -c "cmd notification post -S bigtext -t 'VDBay Performance' -i file:///data/local/tmp/vdbay_logo.png -I file:///data/local/tmp/vdbay_logo.png 'Tag$(date +%s)' 'Module applied successfully'" >/dev/null 2>&1 &
-am start -a android.intent.action.VIEW -d https://t.me/vdbaymodule >/dev/null 2>&1 &
