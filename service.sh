@@ -1,5 +1,5 @@
 #===== WAIT UNTIL BOOT IS COMPLETED =====#
-while [ "$(getprop sys.boot_completed)" != "1" ]; do
+while [ -z "$(getprop sys.boot_completed)" ]; do
     sleep 30
 done
 
